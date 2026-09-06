@@ -24,7 +24,9 @@ jobs:
           path: upstream
 
       - name: Apply tablet compatibility patch
-        run: python3 patches/patch_upstream.py
+        run: |
+          python3 patches/patch_upstream.py
+          python3 patches/patch_v7.py
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -48,6 +50,6 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: JoyConMerge-APK-v6
+          name: JoyConMerge-APK-v7
           path: upstream/app/build/outputs/apk/release/app-release.apk
           retention-days: 30
